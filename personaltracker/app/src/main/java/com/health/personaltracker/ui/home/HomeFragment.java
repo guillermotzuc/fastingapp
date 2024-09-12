@@ -1,5 +1,7 @@
 package com.health.personaltracker.ui.home;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,6 +86,7 @@ public class HomeFragment extends Fragment {
                 newFasting.end_datetime = localDate.toString();
                 newFasting.active = true;
                 fastingDao.insertAll(newFasting);
+                updateFasting(newFasting, progress, progressLabel, startFasting, endFasting);
             }
         });
 
@@ -92,12 +95,10 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
 
                 if (Optional.ofNullable(current).isPresent()) {
-
                     FastingDao fastingDao = db.fastingDao();
                     current.active = false;
                     fastingDao.update(current);
-                    progress.setProgress(0, true);
-                    progressLabel.setText("");
+                    updateFasting(null, progress, progressLabel, startFasting, endFasting);
                 }
             }
         });
@@ -106,6 +107,7 @@ public class HomeFragment extends Fragment {
         refreshBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Fasting current = fastingDao.findActive();
                 updateFasting(current, progress, progressLabel, startFasting, endFasting);
             }
         });
@@ -113,7 +115,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    private void updateFasting(Fasting current, ProgressBar progress, TextView progressLabel, Button startFasting, Button endFasting ) {
+    private void updateFasting(Fasting current, ProgressBar progressBar, TextView progressLabel, Button startFasting, Button endFasting ) {
         if(Optional.ofNullable(current).isPresent()) {
             startFasting.setVisibility(View.GONE);
             endFasting.setVisibility(View.VISIBLE);
@@ -122,14 +124,21 @@ public class HomeFragment extends Fragment {
 
             if (hours == 0) {
                 progressLabel.setText(p.getMinutes() + " m");
+                progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
             } else {
                 int percentage = (hours == 0) ? 0 : (hours * 100) / 24;
                 progressLabel.setText(hours + "h  " + percentage + " %");
-                progress.setProgress(percentage, true);
+                progressBar.setProgress(percentage, true);
+                if (hours >= 12) {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+                }
             }
         } else {
             startFasting.setVisibility(View.VISIBLE);
             endFasting.setVisibility(View.GONE);
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
+            progressBar.setProgress(0, true);
+            progressLabel.setText("");
         }
     }
 
