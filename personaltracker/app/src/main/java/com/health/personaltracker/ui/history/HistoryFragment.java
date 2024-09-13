@@ -7,18 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Room;
 
 import com.health.personaltracker.AppDatabase;
 import com.health.personaltracker.R;
 import com.health.personaltracker.dao.FastingDao;
 import com.health.personaltracker.databinding.FragmentHistoryBinding;
-import com.health.personaltracker.databinding.FragmentNotificationsBinding;
 import com.health.personaltracker.model.Fasting;
 
 import org.joda.time.DateTime;
