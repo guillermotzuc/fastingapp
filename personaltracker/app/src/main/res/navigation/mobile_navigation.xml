@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.health.personaltracker.ui.history.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.health.personaltracker.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"

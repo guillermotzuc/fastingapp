@@ -96,6 +96,8 @@ public class HomeFragment extends Fragment {
 
                 if (Optional.ofNullable(current).isPresent()) {
                     FastingDao fastingDao = db.fastingDao();
+                    Period p = new Period(DateTime.parse(current.start_datetime), DateTime.now());
+                    current.hours = p.getHours();
                     current.active = false;
                     fastingDao.update(current);
                     updateFasting(null, progress, progressLabel, startFasting, endFasting);
