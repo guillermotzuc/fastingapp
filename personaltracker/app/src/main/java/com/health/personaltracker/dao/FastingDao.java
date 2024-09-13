@@ -12,7 +12,7 @@ import java.util.List;
 
 @Dao
 public interface FastingDao {
-    @Query("SELECT * FROM fasting WHERE active = 0")
+    @Query("SELECT * FROM fasting WHERE active = 0 AND hours > 11")
     List<Fasting> getAll();
 
     @Query("SELECT * FROM fasting WHERE uid IN (:fastingIds)")
