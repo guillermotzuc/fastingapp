@@ -126,7 +126,6 @@ public class HomeFragment extends Fragment {
             endFasting.setVisibility(View.VISIBLE);
             Period p = new Period(DateTime.parse(current.start_datetime), DateTime.now());
             int hours = p.getHours();
-
             if (hours == 0) {
                 progressLabel.setText(p.getMinutes() + " m");
                 progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
@@ -135,13 +134,13 @@ public class HomeFragment extends Fragment {
                 progressLabel.setText(hours + "h  " + percentage + " %");
                 progressBar.setProgress(percentage, true);
                 if (hours >= 12) {
-                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(  169, 223, 191 )));
                 }
             }
         } else {
             startFasting.setVisibility(View.VISIBLE);
             endFasting.setVisibility(View.GONE);
-            progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb( 237, 187, 153 )));
             progressBar.setProgress(0, true);
             progressLabel.setText("");
         }
