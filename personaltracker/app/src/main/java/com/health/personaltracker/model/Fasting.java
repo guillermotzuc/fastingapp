@@ -18,4 +18,7 @@ public class Fasting {
 
     @ColumnInfo(name = "active")
     public boolean active;
+
+    @ColumnInfo(name = "hours")
+    public int hours;
 }

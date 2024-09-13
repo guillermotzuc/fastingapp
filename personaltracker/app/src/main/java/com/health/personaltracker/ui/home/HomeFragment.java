@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment {
                 Fasting newFasting = new Fasting();
                 newFasting.uid = uid;
                 newFasting.start_datetime = localDate.toString();
-                newFasting.end_datetime = localDate.toString();
+                newFasting.end_datetime = "";
                 newFasting.active = true;
                 fastingDao.insertAll(newFasting);
                 updateFasting(newFasting, progress, progressLabel, startFasting, endFasting);
@@ -96,6 +96,11 @@ public class HomeFragment extends Fragment {
 
                 if (Optional.ofNullable(current).isPresent()) {
                     FastingDao fastingDao = db.fastingDao();
+                    Date date = new Date();
+                    LocalDateTime localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+                    Period p = new Period(DateTime.parse(current.start_datetime), DateTime.now());
+                    current.end_datetime = localDate.toString();
+                    current.hours = p.getHours();
                     current.active = false;
                     fastingDao.update(current);
                     updateFasting(null, progress, progressLabel, startFasting, endFasting);
