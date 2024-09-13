@@ -8,5 +8,5 @@
     android:padding="5dip"
     android:textSize="20sp"
     android:textStyle="bold"
-    android:drawableLeft="@drawable/ic_arrow_right_black_24dp">
+    android:drawableLeft="@drawable/ic_arrow_right_light_orange_24">
 </TextView>
