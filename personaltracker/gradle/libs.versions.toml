@@ -15,6 +15,7 @@ roomRuntime = "2.7.0-alpha07"
 roomCompiler = "2.7.0-alpha07"
 coreKtx = "1.13.1"
 jodaTime = "2.12.7"
+room_version = "2.7.0-alpha07"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -28,10 +29,11 @@ lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-view
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 joda-time = { group = "joda-time", name = "joda-time", version.ref = "jodaTime" }
+
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room_version" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room_version" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
