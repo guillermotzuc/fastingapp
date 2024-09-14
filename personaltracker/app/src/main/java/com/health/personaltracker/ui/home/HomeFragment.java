@@ -1,5 +1,6 @@
 package com.health.personaltracker.ui.home;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -49,9 +50,9 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        textView.setText(getTodayPhrase());
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView phraseTextView = binding.textHome;
+        phraseTextView.setText(getTodayPhrase());
+        homeViewModel.getText().observe(getViewLifecycleOwner(), phraseTextView::setText);
 
         final ProgressBar progress = binding.fastingProgressBar;
         final TextView progressLabel = binding.progressLabel;
@@ -117,6 +118,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        final FloatingActionButton btnShare = binding.btnShare;
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, phraseTextView.getText());
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+            }
+        });
         return root;
     }
 
