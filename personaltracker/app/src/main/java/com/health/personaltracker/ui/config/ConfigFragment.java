@@ -4,22 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
-import com.health.personaltracker.R;
-import com.health.personaltracker.databinding.FragmentConfigsBinding;
-import com.health.personaltracker.databinding.FragmentNotificationsBinding;
-import com.health.personaltracker.ui.notifications.NotificationsViewModel;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import com.health.personaltracker.databinding.FragmentConfigsBinding;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
