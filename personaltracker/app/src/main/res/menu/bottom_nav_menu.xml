@@ -15,7 +15,7 @@
         android:fillColor="#FF000000"
         android:title="@string/title_history" />
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_configurations"
         android:icon="@drawable/ic_construction_24dp"
-        android:title="@string/title_notifications" />
+        android:title="@string/title_configurations" />
 </menu>

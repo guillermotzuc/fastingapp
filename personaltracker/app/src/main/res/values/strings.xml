@@ -4,6 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_history">History</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_configurations">Configurations</string>
     <string name="btn_start_fasting">Start Fasting</string>
     <string name="btn_end_fasting">End fasting</string>
     <string name="no_desc">End fasting</string>
