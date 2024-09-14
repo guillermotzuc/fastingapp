@@ -29,8 +29,6 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -49,33 +47,18 @@ public class DashboardFragment extends Fragment {
         TextView fasting1311 = binding.fasting1311;
         TextView fasting1212 = binding.fasting1212;
 
-        fasting159.setVisibility(View.GONE);
-        fasting1410.setVisibility(View.GONE);
-        fasting1311.setVisibility(View.GONE);
-        fasting1212.setVisibility(View.GONE);
+        Map<Integer, TextView> fastingHourToTextView = Map.of(16, fasting168
+        , 15, fasting159
+        , 14, fasting1410
+        , 13, fasting1311
+        , 12, fasting1212);
 
-        for (Integer key : hoursMap.keySet()) {
-            switch (key) {
-                case 16 :
-                    fasting168.setText(String.format("(%d) 16/8", hoursMap.get(key)));
-                    break;
-                case 15 :
-                    fasting159.setText(String.format("(%d) 15/9", hoursMap.get(key)));
-                    fasting159.setVisibility(View.VISIBLE);
-                    break;
-                case 14 :
-                    fasting1410.setText(String.format("(%d) 14/10", hoursMap.get(key)));
-                    fasting1410.setVisibility(View.VISIBLE);
-                    break;
-                case 13 :
-                    fasting1311.setText(String.format("(%d) 13/11", hoursMap.get(key)));
-                    fasting1311.setVisibility(View.VISIBLE);
-                    break;
-                case 12 :
-                    fasting1212.setText(String.format("(%d) 12/12", hoursMap.get(key)));
-                    fasting1212.setVisibility(View.VISIBLE);
-                    break;
-            }
+        fastingHourToTextView.values().forEach(tv -> tv.setVisibility(View.GONE));
+        for (Integer fastingHour : hoursMap.keySet()) {
+            int eatingWindow = 24 - fastingHour;
+            TextView fastingItemControl = fastingHourToTextView.get(fastingHour);
+            fastingItemControl.setText(String.format("(%d) %d/%d", hoursMap.get(fastingHour), fastingHour, eatingWindow));
+            fastingItemControl.setVisibility(View.VISIBLE);
         }
 
         return root;

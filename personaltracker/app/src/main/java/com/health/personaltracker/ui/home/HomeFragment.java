@@ -124,6 +124,7 @@ public class HomeFragment extends Fragment {
         if(Optional.ofNullable(current).isPresent()) {
             startFasting.setVisibility(View.GONE);
             endFasting.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
             Period p = new Period(DateTime.parse(current.start_datetime), DateTime.now());
             int hours = p.getHours();
             if (hours == 0) {
@@ -143,6 +144,7 @@ public class HomeFragment extends Fragment {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb( 237, 187, 153 )));
             progressBar.setProgress(0, true);
             progressLabel.setText("");
+            progressBar.setVisibility(View.GONE);
         }
     }
 
