@@ -192,7 +192,7 @@ public class HomeFragment extends Fragment {
         int low = 1;
         int high = questions.length - 1;
         int result = rand.nextInt(high - low) + low;
-        return questions[result].getPhrase();
+        return "\"" + questions[result].getPhrase() + "\"";
     }
 
     public static String readTextFile(InputStream inputStream) {
