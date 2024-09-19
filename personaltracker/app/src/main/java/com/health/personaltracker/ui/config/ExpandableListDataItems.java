@@ -11,34 +11,19 @@ public class ExpandableListDataItems {
         // As we are populating List of fruits, vegetables and nuts, using them here
         // We can modify them as per our choice.
         // And also choice of fruits/vegetables/nuts can be changed
-        List<String> fruits = new ArrayList<String>();
-        fruits.add("Apple");
-        fruits.add("Orange");
-        fruits.add("Guava");
-        fruits.add("Papaya");
-        fruits.add("Pineapple");
+        List<String> bibliografia = new ArrayList<String>();
+        bibliografia.add("'Manual de estoicismo' by Epicteto");
+        bibliografia.add("Lecciones de epicureísmo: El arte de la felicidad");
+        bibliografia.add("'Sobre la constancia del sabio' by Séneca");
+        bibliografia.add("'Sobre la felicidad' by Séneca.");
+        bibliografia.add("'De la brevedad de la vida' by Séneca.");
+        bibliografia.add("'De la ira' by Séneca.");
 
-        List<String> vegetables = new ArrayList<String>();
-        vegetables.add("Tomato");
-        vegetables.add("Potato");
-        vegetables.add("Carrot");
-        vegetables.add("Cabbage");
-        vegetables.add("Cauliflower");
+        List<String> contacto = new ArrayList<String>();
+        contacto.add("email: guillermo.tzuc@gmail.com");
 
-        List<String> nuts = new ArrayList<String>();
-        nuts.add("Cashews");
-        nuts.add("Badam");
-        nuts.add("Pista");
-        nuts.add("Raisin");
-        nuts.add("Walnut");
-
-        // Fruits are grouped under Fruits Items. Similarly the rest two are under
-        // Vegetable Items and Nuts Items respectively.
-        // i.e. expandableDetailList object is used to map the group header strings to
-        // their respective children using an ArrayList of Strings.
-        expandableDetailList.put("Fruits Items", fruits);
-        expandableDetailList.put("Vegetable Items", vegetables);
-        expandableDetailList.put("Nuts Items", nuts);
+        expandableDetailList.put("Bibliografia", bibliografia);
+        expandableDetailList.put("Contacto", contacto);
         return expandableDetailList;
     }
 }

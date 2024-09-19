@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Personal App</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_history">History</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_configurations">Configurations</string>
-    <string name="btn_start_fasting">Start Fasting</string>
-    <string name="btn_end_fasting">End fasting</string>
-    <string name="no_desc">End fasting</string>
+    <string name="app_name">Ayuno intermitente</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Panel</string>
+    <string name="title_history">Historial</string>
+    <string name="title_notifications">Notificaciones</string>
+    <string name="title_configurations">Info</string>
+    <string name="btn_start_fasting">Iniciar ayuno</string>
+    <string name="btn_end_fasting">Completar ayuno</string>
+    <string name="no_desc"> </string>
     <string name="fasting_16_8">16/8</string>
     <string name="fasting_15_9">15/9</string>
     <string name="fasting_14_10">14/10</string>

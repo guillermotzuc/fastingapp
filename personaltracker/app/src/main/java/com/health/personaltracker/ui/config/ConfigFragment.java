@@ -41,7 +41,7 @@ public class ConfigFragment extends Fragment {
         expandableListViewExample.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getContext(), expandableTitleList.get(groupPosition) + " List Expanded.", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getContext(), expandableTitleList.get(groupPosition) + " List Expanded.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -49,7 +49,7 @@ public class ConfigFragment extends Fragment {
         expandableListViewExample.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getContext(), expandableTitleList.get(groupPosition) + " List Collapsed.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), expandableTitleList.get(groupPosition) + " List Collapsed.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -60,12 +60,13 @@ public class ConfigFragment extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
+                /*
                 Toast.makeText(getContext(), expandableTitleList.get(groupPosition)
                         + " -> "
                         + expandableDetailList.get(
                         expandableTitleList.get(groupPosition)).get(
                         childPosition), Toast.LENGTH_SHORT
-                ).show();
+                ).show();*/
                 return false;
             }
         });
