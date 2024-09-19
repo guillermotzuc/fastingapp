@@ -40,7 +40,7 @@ public class HistoryFragment extends Fragment {
         final FastingDao fastingDao = db.fastingDao();
         List<Fasting> fastingList = fastingDao.getAll();
         if (fastingList != null && !fastingList.isEmpty()) {
-            DateTimeFormatter dtf = DateTimeFormat.forPattern("MM/dd/yyyy HH");
+            DateTimeFormatter dtf = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm");
             @SuppressLint("DefaultLocale") String[] fastingHistory = fastingList.stream()
                     .map(item -> String.format("%s - %s (Hours: %d)",
                             DateTime.parse(item.start_datetime).toString(dtf),

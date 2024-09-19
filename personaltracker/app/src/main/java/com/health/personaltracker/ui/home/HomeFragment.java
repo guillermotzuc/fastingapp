@@ -147,7 +147,7 @@ public class HomeFragment extends Fragment {
                 progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
             } else {
                 int percentage = (hours == 0) ? 0 : (hours * 100) / 24;
-                progressLabel.setText(hours + "h  " + percentage + " %");
+                progressLabel.setText(hours + "h  " + p.getMinutes()  + "m " + percentage + " %");
                 progressBar.setProgress(percentage, true);
                 if (hours >= 12) {
                     progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(  169, 223, 191 )));
