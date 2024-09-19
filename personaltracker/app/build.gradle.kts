@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.core.ktx)
     implementation(libs.joda.time)
+    implementation(libs.fragment)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
