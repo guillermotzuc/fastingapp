@@ -22,7 +22,9 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HistoryFragment extends Fragment {
 
@@ -38,7 +40,9 @@ public class HistoryFragment extends Fragment {
                 AppDatabase.class, "database-name").allowMainThreadQueries().build();
 
         final FastingDao fastingDao = db.fastingDao();
-        List<Fasting> fastingList = fastingDao.getAll();
+        List<Fasting> fastingList = fastingDao.getAll()
+                .stream().sorted(Comparator.comparing(Fasting::getUid).reversed())
+                .collect(Collectors.toList());
         if (fastingList != null && !fastingList.isEmpty()) {
             DateTimeFormatter dtf = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm");
             @SuppressLint("DefaultLocale") String[] fastingHistory = fastingList.stream()

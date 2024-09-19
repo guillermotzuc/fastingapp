@@ -21,4 +21,8 @@ public class Fasting {
 
     @ColumnInfo(name = "hours")
     public int hours;
+
+    public int getUid() {
+        return uid;
+    }
 }
