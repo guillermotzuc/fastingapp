@@ -1,4 +1,4 @@
-package com.health.personaltracker.ui.config;
+package com.health.personaltracker.ui.info;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;

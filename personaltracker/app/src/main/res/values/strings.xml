@@ -4,7 +4,7 @@
     <string name="title_dashboard">Panel</string>
     <string name="title_history">Historial</string>
     <string name="title_notifications">Notificaciones</string>
-    <string name="title_configurations">Info</string>
+    <string name="title_info">Info</string>
     <string name="btn_start_fasting">Iniciar ayuno</string>
     <string name="btn_end_fasting">Completar ayuno</string>
     <string name="no_desc"> </string>

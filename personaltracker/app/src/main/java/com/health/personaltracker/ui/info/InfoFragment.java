@@ -1,4 +1,4 @@
-package com.health.personaltracker.ui.config;
+package com.health.personaltracker.ui.info;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,20 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-import com.health.personaltracker.databinding.FragmentConfigsBinding;
-
+import com.health.personaltracker.databinding.FragmentInfoBinding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ConfigFragment extends Fragment {
+public class InfoFragment extends Fragment {
 
-    private FragmentConfigsBinding binding;
+    private FragmentInfoBinding binding;
     ExpandableListView expandableListViewExample;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableTitleList;
@@ -28,7 +24,8 @@ public class ConfigFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentConfigsBinding.inflate(inflater, container, false);
+
+        binding = FragmentInfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         expandableListViewExample = binding.expandableListViewSample;
@@ -72,6 +69,7 @@ public class ConfigFragment extends Fragment {
         });
 
         return root;
+
     }
 
     @Override
