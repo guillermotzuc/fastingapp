@@ -16,6 +16,7 @@ roomCompiler = "2.7.0-alpha07"
 coreKtx = "1.13.1"
 jodaTime = "2.12.7"
 room_version = "2.7.0-alpha07"
+fragment = "1.8.3"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -34,6 +35,7 @@ joda-time = { group = "joda-time", name = "joda-time", version.ref = "jodaTime" 
 
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room_version" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room_version" }
+fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

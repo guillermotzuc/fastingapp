@@ -7,8 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#d8dad9</color>
 
     <color name="light_orange">#edbb99</color>
     <color name="dark_orange">#eb984e</color>
 
+    <!-- Dark mode -->
+    <color name="light_gray">#dceee3</color>
+    <color name="dark_gray">#75b08d</color>
 </resources>

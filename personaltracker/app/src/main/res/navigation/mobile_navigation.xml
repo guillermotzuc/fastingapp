@@ -24,8 +24,8 @@
         tools:layout="@layout/fragment_history" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.health.personaltracker.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_info"
+        android:name="com.health.personaltracker.ui.info.InfoFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_info" />
 </navigation>
