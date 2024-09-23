@@ -14,8 +14,8 @@
     <string name="fasting_13_11">13/11</string>
     <string name="fasting_12_12">12/12</string>
 
-    <string name="analytics">Metricas</string>
-    <string name="reset">Eliminar Registros</string>
-    <string name="report_bug">Reportar error</string>
-    <string name="daily_reflection">Revision diaria</string>
+    <string name="title_analytics">Metricas</string>
+    <string name="title_reset">Eliminar Registros</string>
+    <string name="title_report_bug">Reportar error</string>
+    <string name="title_daily_reflection">Revision diaria</string>
 </resources>

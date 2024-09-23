@@ -1,19 +1,20 @@
 package com.health.personaltracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.health.personaltracker.databinding.ActivityMainBinding;
+import com.health.personaltracker.toolbar.actions.AnalyticsActivity;
+import com.health.personaltracker.toolbar.actions.CleanDatabaseActivity;
+import com.health.personaltracker.toolbar.actions.DailyReflectionActivity;
+import com.health.personaltracker.toolbar.actions.ReportBugActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +43,40 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        //Bundle is optional
+        Bundle bundle = new Bundle();
+
+        if (item.getItemId() == R.id.main_to_analytics) {
+            Intent myIntent = new Intent(this, AnalyticsActivity.class);
+            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            bundle.putString("activity_title", "Analytics");
+            myIntent.putExtras(bundle);
+            startActivity(myIntent);
+        }
+
+        if (item.getItemId() == R.id.main_to_daily_reflection) {
+            Intent myIntent = new Intent(this, DailyReflectionActivity.class);
+            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            bundle.putString("activity_title", "Reflexion Diaria");
+            myIntent.putExtras(bundle);
+            startActivity(myIntent);
+        }
+
+        if (item.getItemId() == R.id.main_to_report_bug) {
+            Intent myIntent = new Intent(this, ReportBugActivity.class);
+            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            bundle.putString("activity_title", "Reportar error/Sugerir funcionalidad");
+            myIntent.putExtras(bundle);
+            startActivity(myIntent);
+        }
+
+        if (item.getItemId() == R.id.main_to_reset) {
+            Intent myIntent = new Intent(this, CleanDatabaseActivity.class);
+            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            bundle.putString("activity_title", "Limpiar registros");
+            myIntent.putExtras(bundle);
+            startActivity(myIntent);
+        }
         return (super.onOptionsItemSelected(item));
     }
 }
