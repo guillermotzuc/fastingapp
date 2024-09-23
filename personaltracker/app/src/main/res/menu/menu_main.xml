@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item android:id="@+id/daily_reflection" android:icon="@drawable/ic_psychology_alt_24dp" app:showAsAction="ifRoom" android:title="@string/daily_reflection"/>
+    <item android:id="@+id/analytics" android:icon="@drawable/ic_analytics_white_24dp" app:showAsAction="ifRoom" android:title="@string/analytics"/>
+    <item android:id="@+id/report_bug" android:icon="@drawable/ic_bug_report_24dp" app:showAsAction="never" android:title="@string/report_bug"/>
+    <item android:id="@+id/reset" android:icon="@drawable/ic_restore_page_24dp" app:showAsAction="never" android:title="@string/reset"/>
+</menu>
