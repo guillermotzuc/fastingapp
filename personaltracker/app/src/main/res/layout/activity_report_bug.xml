@@ -5,6 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".toolbar.actions.ReportBugActivity">
+    tools:context=".ui.toolbar.ReportBugActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

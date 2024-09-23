@@ -1,4 +1,4 @@
-package com.health.personaltracker.toolbar.actions;
+package com.health.personaltracker.ui.toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,14 +14,15 @@ import androidx.core.view.WindowInsetsCompat;
 import com.health.personaltracker.MainActivity;
 import com.health.personaltracker.R;
 
-public class AnalyticsActivity extends AppCompatActivity {
+public class DailyReflectionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(R.string.title_analytics);
+        setTitle(R.string.title_daily_reflection);
+
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_analytics);
+        setContentView(R.layout.activity_daily_relection);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -32,14 +33,14 @@ public class AnalyticsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_analytics, menu);
+        getMenuInflater().inflate(R.menu.menu_daily_reflection, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == R.id.analytics_to_main) {
+        if (item.getItemId() == R.id.daily_reflection_to_main) {
             Intent myIntent = new Intent(this, MainActivity.class);
             myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             //Bundle is optional

@@ -13,16 +13,16 @@
         android:theme="@style/Theme.Personaltracker"
         tools:targetApi="31">
         <activity
-            android:name=".toolbar.actions.CleanDatabaseActivity"
+            android:name=".ui.toolbar.CleanDatabaseActivity"
             android:exported="false" />
         <activity
-            android:name=".toolbar.actions.ReportBugActivity"
+            android:name=".ui.toolbar.ReportBugActivity"
             android:exported="false" />
         <activity
-            android:name=".toolbar.actions.DailyReflectionActivity"
+            android:name=".ui.toolbar.DailyReflectionActivity"
             android:exported="false" />
         <activity
-            android:name=".toolbar.actions.AnalyticsActivity"
+            android:name=".ui.toolbar.AnalyticsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -34,6 +34,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.health.personaltracker.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 </manifest>
