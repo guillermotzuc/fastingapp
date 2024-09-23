@@ -11,10 +11,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.health.personaltracker.databinding.ActivityMainBinding;
-import com.health.personaltracker.toolbar.actions.AnalyticsActivity;
-import com.health.personaltracker.toolbar.actions.CleanDatabaseActivity;
-import com.health.personaltracker.toolbar.actions.DailyReflectionActivity;
-import com.health.personaltracker.toolbar.actions.ReportBugActivity;
+import com.health.personaltracker.ui.toolbar.AnalyticsActivity;
+import com.health.personaltracker.ui.toolbar.CleanDatabaseActivity;
+import com.health.personaltracker.ui.toolbar.DailyReflectionActivity;
+import com.health.personaltracker.ui.toolbar.ReportBugActivity;
 
 public class MainActivity extends AppCompatActivity {
 
