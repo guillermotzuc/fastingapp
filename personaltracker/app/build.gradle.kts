@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.joda.time)
     implementation(libs.fragment)
+    implementation(libs.activity)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -13,11 +13,24 @@
         android:theme="@style/Theme.Personaltracker"
         tools:targetApi="31">
         <activity
+            android:name=".toolbar.actions.CleanDatabaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".toolbar.actions.ReportBugActivity"
+            android:exported="false" />
+        <activity
+            android:name=".toolbar.actions.DailyReflectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".toolbar.actions.AnalyticsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
