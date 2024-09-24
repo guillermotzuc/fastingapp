@@ -1,4 +1,4 @@
-package com.health.personaltracker.model;
+package com.health.personaltracker.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

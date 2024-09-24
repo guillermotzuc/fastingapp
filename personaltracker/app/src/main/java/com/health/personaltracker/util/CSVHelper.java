@@ -1,14 +1,12 @@
-package com.health.personaltracker.ui.history;
+package com.health.personaltracker.util;
 
 import android.content.Context;
-import android.net.Uri;
 
-import com.health.personaltracker.model.Fasting;
+import com.health.personaltracker.entity.Fasting;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class CSVHelper {

@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.health.personaltracker.model.Fasting;
+import com.health.personaltracker.entity.Fasting;
 
 import java.util.List;
 

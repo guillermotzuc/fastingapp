@@ -9,11 +9,13 @@ import android.widget.ExpandableListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.health.personaltracker.databinding.FragmentInfoBinding;
+import com.health.personaltracker.model.FragmentBase;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class InfoFragment extends Fragment {
+public class InfoFragment extends FragmentBase {
 
     private FragmentInfoBinding binding;
     ExpandableListView expandableListViewExample;

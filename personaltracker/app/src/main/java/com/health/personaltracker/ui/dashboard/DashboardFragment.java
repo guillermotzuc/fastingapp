@@ -13,13 +13,14 @@ import androidx.room.Room;
 import com.health.personaltracker.AppDatabase;
 import com.health.personaltracker.dao.FastingDao;
 import com.health.personaltracker.databinding.FragmentDashboardBinding;
-import com.health.personaltracker.model.Fasting;
+import com.health.personaltracker.entity.Fasting;
+import com.health.personaltracker.model.FragmentBase;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class DashboardFragment extends Fragment {
+public class DashboardFragment extends FragmentBase {
 
     private FragmentDashboardBinding binding;
 
@@ -29,10 +30,7 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final AppDatabase db = Room.databaseBuilder(getActivity().getApplicationContext(),
-                AppDatabase.class, "database-name").allowMainThreadQueries().build();
-
-        final FastingDao fastingDao = db.fastingDao();
+        final FastingDao fastingDao = getFastingDao();
         List<Fasting> fastings = fastingDao.getAll();
         Map<Integer, Long> hoursMap = fastings.stream()
                 .collect(Collectors.groupingBy(f -> f.hours, Collectors.counting()));
