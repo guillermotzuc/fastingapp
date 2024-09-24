@@ -18,17 +18,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.room.Room;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.health.personaltracker.AppDatabase;
-import com.health.personaltracker.MainActivity;
 import com.health.personaltracker.R;
 import com.health.personaltracker.dao.FastingDao;
 import com.health.personaltracker.databinding.FragmentHistoryBinding;
-import com.health.personaltracker.model.Fasting;
+import com.health.personaltracker.entity.Fasting;
+import com.health.personaltracker.model.FragmentBase;
+import com.health.personaltracker.util.CSVHelper;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -39,7 +39,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends FragmentBase {
 
     private FragmentHistoryBinding binding;
 
@@ -49,10 +49,7 @@ public class HistoryFragment extends Fragment {
         binding = FragmentHistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final AppDatabase db = Room.databaseBuilder(getActivity().getApplicationContext(),
-                AppDatabase.class, "database-name").allowMainThreadQueries().build();
-
-        final FastingDao fastingDao = db.fastingDao();
+        final FastingDao fastingDao = getFastingDao();
         final List<Fasting> fastingList = fastingDao.getAll()
                 .stream().sorted(Comparator.comparing(Fasting::getUid).reversed())
                 .collect(Collectors.toList());
