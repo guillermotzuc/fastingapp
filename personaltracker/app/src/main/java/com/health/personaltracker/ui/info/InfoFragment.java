@@ -31,8 +31,8 @@ public class InfoFragment extends FragmentBase {
         View root = binding.getRoot();
 
         expandableListViewExample = binding.expandableListViewSample;
-        expandableDetailList = ExpandableListDataItems.getData();
-        expandableTitleList = new ArrayList<String>(expandableDetailList.keySet());
+        expandableDetailList = ExpandableListDataItems.getData(getContext());
+        expandableTitleList = new ArrayList<>(expandableDetailList.keySet());
         expandableListAdapter = new CustomizedExpandableListAdapter(getContext(), expandableTitleList, expandableDetailList);
         expandableListViewExample.setAdapter(expandableListAdapter);
 
