@@ -6,67 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <LinearLayout
+    <GridView
+        android:id="@+id/idGVcourses"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:orientation="vertical"
-        android:id="@+id/linear_layout">
+        android:layout_height="match_parent"
+        android:horizontalSpacing="6dp"
+        android:numColumns="2"
+        android:verticalSpacing="6dp" />
 
-        <TextView
-            android:id="@+id/fasting_16_8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:gravity="center|start"
-            android:text="@string/fasting_16_8"
-            app:drawableStartCompat="@drawable/ic_rewarded_yellow_40dp"
-            android:drawablePadding="10dp"/>
-
-        <TextView
-            android:id="@+id/fasting_15_9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:gravity="center|start"
-            android:text="@string/fasting_15_9"
-            app:drawableStartCompat="@drawable/ic_orange_whatshot_40dp"
-            android:drawablePadding="10dp"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:id="@+id/fasting_14_10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:gravity="center|start"
-            android:text="@string/fasting_14_10"
-            app:drawableStartCompat="@drawable/ic_orange_whatshot_40dp"
-            android:drawablePadding="10dp"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:id="@+id/fasting_13_11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:gravity="center|start"
-            android:text="@string/fasting_13_11"
-            app:drawableStartCompat="@drawable/ic_orange_whatshot_40dp"
-            android:drawablePadding="10dp"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:id="@+id/fasting_12_12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:gravity="center|start"
-            android:text="@string/fasting_12_12"
-            app:drawableStartCompat="@drawable/ic_orange_whatshot_40dp"
-            android:drawablePadding="10dp"
-            android:layout_marginTop="5dp"/>
-
-    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,25 +4,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.GridView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.room.Room;
 
-import com.health.personaltracker.AppDatabase;
+import com.health.personaltracker.R;
 import com.health.personaltracker.dao.FastingDao;
 import com.health.personaltracker.databinding.FragmentDashboardBinding;
 import com.health.personaltracker.entity.Fasting;
+import com.health.personaltracker.model.FastingCardModel;
 import com.health.personaltracker.model.FragmentBase;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class DashboardFragment extends FragmentBase {
 
     private FragmentDashboardBinding binding;
+    private GridView coursesGV;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,28 +36,30 @@ public class DashboardFragment extends FragmentBase {
         List<Fasting> fastings = fastingDao.getAll();
         Map<Integer, Long> hoursMap = fastings.stream()
                 .collect(Collectors.groupingBy(f -> f.hours, Collectors.counting()));
+        ArrayList<FastingCardModel> courseModelArrayList = new ArrayList<>();
+        FastingCardGVAdapter adapter = new FastingCardGVAdapter(getContext(), courseModelArrayList);
+        coursesGV = binding.idGVcourses;
 
-        TextView fasting168 = binding.fasting168;
-        TextView fasting159 = binding.fasting159;
-        TextView fasting1410 = binding.fasting1410;
-        TextView fasting1311 = binding.fasting1311;
-        TextView fasting1212 = binding.fasting1212;
-
-        Map<Integer, TextView> fastingHourToTextView = Map.of(16, fasting168
-        , 15, fasting159
-        , 14, fasting1410
-        , 13, fasting1311
-        , 12, fasting1212);
-
-        fastingHourToTextView.values().forEach(tv -> tv.setVisibility(View.GONE));
-        for (Integer fastingHour : hoursMap.keySet()) {
-            int eatingWindow = 24 - fastingHour;
-            TextView fastingItemControl = fastingHourToTextView.get(fastingHour);
-            fastingItemControl.setText(String.format("(%d) %d/%d", hoursMap.get(fastingHour), fastingHour, eatingWindow));
-            fastingItemControl.setVisibility(View.VISIBLE);
-        }
+        AtomicInteger counter = new AtomicInteger(16);
+        courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_rewarded_yellow_40dp)); // 16h
+        courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_orange_whatshot_40dp)); // 15h
+        courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_orange_whatshot_40dp)); // 14h
+        courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_orange_whatshot_40dp)); // 13h
+        courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_orange_whatshot_40dp)); // 12h
+        coursesGV.setAdapter(adapter);
 
         return root;
+    }
+
+    private FastingCardModel newFastingCard(Map<Integer, Long> hoursMap, int fastingHours, int drawableImg) {
+
+        Long fastingCount = hoursMap.getOrDefault(fastingHours, 0L);
+        return new FastingCardModel(buildFastingLabel(fastingHours, fastingCount, 24 - fastingHours), drawableImg);
+    }
+
+    private String buildFastingLabel(int fastingHour, Long fastingCount, int eatingWindow) {
+
+        return String.format("(%d) %d/%d", fastingCount, fastingHour, eatingWindow);
     }
 
     @Override
