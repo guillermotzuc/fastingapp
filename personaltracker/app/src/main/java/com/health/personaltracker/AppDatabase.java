@@ -4,12 +4,9 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
 import com.health.personaltracker.dao.FastingDao;
-import com.health.personaltracker.dao.UserDao;
 import com.health.personaltracker.entity.Fasting;
-import com.health.personaltracker.model.User;
 
-@Database(entities = {User.class, Fasting.class}, version = 1)
+@Database(entities = { Fasting.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
-    public abstract UserDao userDao();
     public abstract FastingDao fastingDao();
 }

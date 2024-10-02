@@ -29,6 +29,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 
 import java.io.InputStream;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -105,16 +106,11 @@ public class HomeFragment extends FragmentBase {
     private void createFasting() {
         try {
             Date date = new Date();
-            LocalDateTime localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            int year = localDate.getYear();
-            int month = localDate.getMonthValue();
-            int day = localDate.getDayOfMonth();
-            int hour = localDate.getHour() + 3;
-
-            int uid = Integer.parseInt(String.format("%d%d%d%d", year, month, day, hour));
+            Instant dateInstant = date.toInstant();
+            LocalDateTime localDate = dateInstant.atZone(ZoneId.systemDefault()).toLocalDateTime();
             FastingDao fastingDao = getFastingDao();
             Fasting newFasting = new Fasting();
-            newFasting.uid = uid;
+            newFasting.uid = dateInstant.getEpochSecond();
             newFasting.start_datetime = localDate.toString();
             newFasting.end_datetime = "";
             newFasting.active = true;
