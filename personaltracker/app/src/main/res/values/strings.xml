@@ -3,6 +3,7 @@
     <!-- APP STRINGS -->
     <string name="app_version">1.0.0</string> <!-- MAJOR.MINOR.PATH -->
     <string name="app_name">Ayuno</string>
+    <string name="app_database">ayuno-app-database</string>
 
     <!-- MENU STRINGS -->
     <string name="title_home">Inicio</string>

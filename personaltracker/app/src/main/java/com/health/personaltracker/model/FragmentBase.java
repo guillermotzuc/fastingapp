@@ -6,13 +6,14 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.health.personaltracker.AppDatabase;
+import com.health.personaltracker.R;
 import com.health.personaltracker.dao.FastingDao;
 
 public abstract class FragmentBase extends Fragment {
 
     protected AppDatabase getAppDatabase() {
         return Room.databaseBuilder(getActivity().getApplicationContext(),
-                AppDatabase.class, "ayuno-app-database")
+                AppDatabase.class, getString(R.string.app_database))
                 .allowMainThreadQueries()
                 .build();
     }
