@@ -42,8 +42,8 @@ public class DashboardFragment extends FragmentBase {
 
         AtomicInteger counter = new AtomicInteger(16);
         courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_rewarded_yellow_40dp)); // 16h
-        courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_orange_whatshot_40dp)); // 15h
-        courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_orange_whatshot_40dp)); // 14h
+        courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_rewarded_gray_40dp)); // 15h
+        courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_rewarded_orange_24dp)); // 14h
         courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_orange_whatshot_40dp)); // 13h
         courseModelArrayList.add(newFastingCard(hoursMap, counter.getAndDecrement(), R.drawable.ic_orange_whatshot_40dp)); // 12h
         coursesGV.setAdapter(adapter);
