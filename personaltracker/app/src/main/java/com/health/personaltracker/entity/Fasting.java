@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 public class Fasting {
 
     @PrimaryKey
-    public int uid;
+    public Long uid;
 
     @ColumnInfo(name = "start_datetime")
     public String start_datetime;
@@ -22,7 +22,7 @@ public class Fasting {
     @ColumnInfo(name = "hours")
     public int hours;
 
-    public int getUid() {
+    public Long getUid() {
         return uid;
     }
 }
