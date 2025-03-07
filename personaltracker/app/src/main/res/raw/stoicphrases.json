@@ -1,4 +1,5 @@
-[{"phrase" : "Todo el futuro está en la incertidumbre: Vive ahora mismo Séneca"}
+[
+ {"phrase" : "Todo el futuro está en la incertidumbre: Vive ahora mismo Séneca"}
 ,{"phrase" : "La verdadera felicidad es disfrutar del presente, sin depender ansiosamente del futuro, no para divertirse ni con esperanzas ni con miedos, sino para descansar satisfecho con lo que tenemos, lo cual es suficiente para el que es así, y no quiere nada. Las mayores bendiciones de la humanidad están dentro de nosotros y a nuestro alcance. Un hombre sabio se contenta con su suerte, sea cual sea, sin desear lo que no tiene. Séneca"}
 ,{ "phrase" : "Si no se sabe hacia qué puerto se está navegando, ningún viento es favorable. Séneca"}
 ,{ "phrase" : "El propósito de la vida es la felicidad, que se logra con la virtud, viviendo de acuerdo con los dictados de la razón, entrenamiento ético y filosófico, autorreflexión, juicio cuidadoso y calma interior. Cita estoica"}
@@ -436,4 +437,7 @@
 ,{ "phrase" : "Si asumes un papel que va más allá de tus capacidades, no solo pierdes el decoro con él, sino que además dejas de lado el que sí eras capaz de desempeñar." }
 ,{ "phrase" : "Vivir bien y obrar bien es lo mismo que ser feliz, Aristoteles" }
 
+,{ "phrase" : "Ya sea al hablar ante el Senado o ante la persona más humilde, utiliza un lenguaje respetuoso, no pretencioso. Que tu discurso sea claro y honesto, Marco Aurelio." }
+,{ "phrase" : "Todo es efímero, no sólo el que recuerda sino también el recordado, Seneca" }
+,{ "phrase" : "Siempre tienes la opción de no tener opinión. No hay necesidad de enojarse o de desperdiciar el tiempo por cosas que no puedes controlar, Marco Aurelio." }
 ]
