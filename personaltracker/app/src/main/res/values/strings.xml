@@ -25,6 +25,7 @@
     <string name="fasting_14_10">14/10</string>
     <string name="fasting_13_11">13/11</string>
     <string name="fasting_12_12">12/12</string>
+    <string name="btn_cancel">Descartar Ayuno</string>
 
     <!-- LABELS STRINGS -->
     <string name="report_bug_label">Descripción:</string>
