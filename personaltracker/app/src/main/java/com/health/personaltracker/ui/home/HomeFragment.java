@@ -8,13 +8,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.health.personaltracker.AppDatabase;
@@ -27,6 +27,8 @@ import com.health.personaltracker.util.PhraseHelper;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.io.InputStream;
 import java.time.Instant;
@@ -42,49 +44,57 @@ public class HomeFragment extends FragmentBase {
     private TextView progressBarLabel;
     private TextView phraseTextView;
     private FloatingActionButton startStopFastingBtn;
-    private FloatingActionButton refreshBtn;
-    private FloatingActionButton btnShare;
+    private FloatingActionButton refreshFastingBtn;
+    private FloatingActionButton btnSharePhrase;
+    private Button btnDiscardFasting;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+    private void loadControlsFromBinding(FragmentHomeBinding binding) {
 
         phraseTextView = binding.textHome;
         progressBar = binding.fastingProgressBar;
         progressBarLabel = binding.progressLabel;
         startStopFastingBtn = binding.btnStartStopFasting;
-        refreshBtn = binding.btnRefresh;
-        btnShare = binding.btnShare;
+        refreshFastingBtn = binding.btnRefresh;
+        btnSharePhrase = binding.btnShare;
+        btnDiscardFasting = binding.btnCancel;
+    }
 
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+
+        // Bind global objects
+        loadControlsFromBinding(binding);
+
+        // Load today's phrase
         InputStream XmlFileInputStream = getResources().openRawResource(R.raw.stoicphrases);
         phraseTextView.setText(PhraseHelper.getTodayPhrase(XmlFileInputStream));
 
+        // Initial fasting status
         Fasting currentFasting = getCurrentFasting();
         updateFasting(currentFasting);
-        startStopFastingBtn.setOnClickListener(new View.OnClickListener() {
+
+        // Bind click events
+        setOnClickListenerForStartFasting();
+        setOnClickListenerForUpdateFasting();
+        setOnClickListenerForSharePhrase();
+        setOnClickListenerForDiscardFasting();
+
+        return binding.getRoot();
+    }
+
+    private void setOnClickListenerForDiscardFasting() {
+        btnDiscardFasting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Fasting currentFasting = getCurrentFasting();
-                if (Optional.ofNullable(currentFasting).isPresent()) {
-                    endFasting();
-               } else {
-                    createFasting();
-                }
+                discardFasting();
             }
         });
+    }
 
-        refreshBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fasting currentFasting = getCurrentFasting();
-                updateFasting(currentFasting);
-            }
-        });
-
-        btnShare.setOnClickListener(new View.OnClickListener() {
+    private void setOnClickListenerForSharePhrase() {
+        btnSharePhrase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -97,7 +107,31 @@ public class HomeFragment extends FragmentBase {
                 startActivity(shareIntent);
             }
         });
-        return root;
+    }
+
+    private void setOnClickListenerForUpdateFasting() {
+        refreshFastingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fasting currentFasting = getCurrentFasting();
+                updateFasting(currentFasting);
+            }
+        });
+    }
+
+    private void setOnClickListenerForStartFasting() {
+        startStopFastingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fasting currentFasting = getCurrentFasting();
+                if (Optional.ofNullable(currentFasting).isPresent()) {
+                    endFasting();
+                } else {
+                    createFasting();
+                }
+            }
+        });
     }
 
     private void createFasting() {
@@ -118,20 +152,33 @@ public class HomeFragment extends FragmentBase {
         }
     }
 
+    private void discardFasting() {
+        try {
+            Fasting current = getCurrentFasting();
+            if (Optional.ofNullable(current).isPresent()) {
+                FastingDao fastingDao = getFastingDao();
+                fastingDao.delete(current);
+                updateFasting(null);
+            }
+        } catch (Exception ex) {
+            Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void endFasting() {
         try {
-        Fasting current = getCurrentFasting();
-        if (Optional.ofNullable(current).isPresent()) {
-            FastingDao fastingDao = getFastingDao();
-            Date date = new Date();
-            LocalDateTime localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            Period p = new Period(DateTime.parse(current.start_datetime), DateTime.now());
-            current.end_datetime = localDate.toString();
-            current.hours = p.getHours();
-            current.active = false;
-            fastingDao.update(current);
-            updateFasting(null);
-        }
+            Fasting current = getCurrentFasting();
+            if (Optional.ofNullable(current).isPresent()) {
+                FastingDao fastingDao = getFastingDao();
+                Date date = new Date();
+                LocalDateTime localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+                Period p = new Period(DateTime.parse(current.start_datetime), DateTime.now());
+                current.end_datetime = localDate.toString();
+                current.hours = p.getHours();
+                current.active = false;
+                fastingDao.update(current);
+                updateFasting(null);
+            }
         } catch (Exception ex) {
             Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -147,17 +194,25 @@ public class HomeFragment extends FragmentBase {
 
         if (Optional.ofNullable(current).isPresent()) {
             progressBar.setVisibility(View.VISIBLE);
+            btnDiscardFasting.setVisibility(View.VISIBLE);
             Drawable image = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_black_stop_circle_24, getActivity().getTheme());
             startStopFastingBtn.setImageDrawable(image);
 
-            Period p = new Period(DateTime.parse(current.start_datetime), DateTime.now());
-            int hours = p.getHours();
+            DateTimeFormatter dtf = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm");
+            String startDate = DateTime.parse(current.start_datetime).toString(dtf);
+
+            Period period = new Period(DateTime.parse(current.start_datetime), DateTime.now());
+            int hours = period.getHours();
             if (hours == 0) {
-                progressBarLabel.setText(p.getMinutes() + " m");
+                String statusMessage = String.format("%s, Minutes: %s",
+                        startDate, period.getMinutes());
+                progressBarLabel.setText(statusMessage);
                 progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
             } else {
-                int percentage = (hours == 0) ? 0 : (hours * 100) / 24;
-                progressBarLabel.setText(hours + "h  " + p.getMinutes() + "m " + percentage + " %");
+                int percentage = (hours * 100) / 24;
+                String statusMessage = String.format("%s, Hours: %s Minutes: %s [%s]",
+                        startDate, hours, period.getMinutes(), percentage);
+                progressBarLabel.setText(statusMessage);
                 progressBar.setProgress(percentage, true);
                 if (hours >= 12) {
                     progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(169, 223, 191)));
@@ -168,6 +223,7 @@ public class HomeFragment extends FragmentBase {
             progressBar.setProgress(0, true);
             progressBar.setVisibility(View.GONE);
             progressBarLabel.setText("");
+            btnDiscardFasting.setVisibility(View.GONE);
             Drawable image = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_black_timer_play_24dp, getActivity().getTheme());
             startStopFastingBtn.setImageDrawable(image);
         }
