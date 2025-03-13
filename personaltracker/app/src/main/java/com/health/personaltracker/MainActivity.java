@@ -11,9 +11,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.health.personaltracker.databinding.ActivityMainBinding;
-import com.health.personaltracker.ui.toolbar.AnalyticsActivity;
-import com.health.personaltracker.ui.toolbar.CleanDatabaseActivity;
-import com.health.personaltracker.ui.toolbar.DailyReflectionActivity;
 import com.health.personaltracker.ui.toolbar.ReportBugActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,38 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         //Bundle is optional
         Bundle bundle = new Bundle();
-
-        if (item.getItemId() == R.id.main_to_analytics) {
-            Intent myIntent = new Intent(this, AnalyticsActivity.class);
-            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            bundle.putString("activity_title", "Analytics");
-            myIntent.putExtras(bundle);
-            startActivity(myIntent);
-        }
-
-        if (item.getItemId() == R.id.main_to_daily_reflection) {
-            Intent myIntent = new Intent(this, DailyReflectionActivity.class);
-            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            bundle.putString("activity_title", "Reflexion Diaria");
-            myIntent.putExtras(bundle);
-            startActivity(myIntent);
-        }
-
         if (item.getItemId() == R.id.main_to_report_bug) {
             Intent myIntent = new Intent(this, ReportBugActivity.class);
             myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            bundle.putString("activity_title", "Reportar error/Sugerir funcionalidad");
+            bundle.putString("source_activity", "MainActivity");
             myIntent.putExtras(bundle);
             startActivity(myIntent);
         }
 
-        if (item.getItemId() == R.id.main_to_reset) {
-            Intent myIntent = new Intent(this, CleanDatabaseActivity.class);
-            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            bundle.putString("activity_title", "Limpiar registros");
-            myIntent.putExtras(bundle);
-            startActivity(myIntent);
-        }
         return (super.onOptionsItemSelected(item));
     }
 }
