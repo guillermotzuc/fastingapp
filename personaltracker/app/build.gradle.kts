@@ -56,6 +56,8 @@ dependencies {
     implementation(libs.joda.time)
     implementation(libs.fragment)
     implementation(libs.activity)
+    implementation(libs.mp.android.chart)  // Note: Kebab-case in TOML becomes dot-notation here
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

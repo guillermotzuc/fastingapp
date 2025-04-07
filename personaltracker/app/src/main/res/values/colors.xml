@@ -11,6 +11,11 @@
 
     <color name="light_orange">#edbb99</color>
     <color name="dark_orange">#eb984e</color>
+    <color name="checkbox_tint">#6200EE</color> <!-- Purple 500 -->
+    <color name="button_outline_color">#018786</color> <!-- Teal 200 -->
+    <color name="button_ripple_color">#03DAC6</color> <!-- Teal 200 -->
+    <color name="chart_background">#FAFAFA</color>
+    <color name="chart_bar_color">#4CAF50</color>
 
     <!-- Dark mode -->
     <color name="light_gray">#dceee3</color>

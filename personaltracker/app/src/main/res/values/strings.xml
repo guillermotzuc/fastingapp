@@ -15,6 +15,7 @@
     <string name="title_reset">Eliminar Registros</string>
     <string name="title_report_bug">Reportar error</string>
     <string name="title_daily_reflection">Revision diaria</string>
+    <string name="title_health">Salud</string>
 
     <!-- BUTTONS STRINGS -->
     <string name="btn_start_fasting">Iniciar ayuno</string>
@@ -31,10 +32,17 @@
     <string name="report_bug_label">Descripción:</string>
     <string name="report_switch">Solicitar funcionalidad:</string>
     <string name="btn_send">Enviar</string>
+    <string name="goal_label">Goal</string>
+    <string name="guardar_label">GUARDAR</string>
+    <string name="edad_hint">Edad (solo números)</string>
+    <string name="peso_hint">Peso (ej. 72.5)</string>
+    <string name="pasos_hint">Pasos (solo enteros)</string>
 
     <!-- OTHER STRINGS -->
     <string name="contact_mail">guillermo.tzuc@gmail.com</string>
     <string name="mail_subject_new_feature">[Nueva Funcionalidad]</string>
     <string name="mail_subject_bug">[Bug]</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

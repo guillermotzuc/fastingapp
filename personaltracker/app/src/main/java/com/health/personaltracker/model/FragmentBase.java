@@ -8,6 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.health.personaltracker.AppDatabase;
 import com.health.personaltracker.R;
 import com.health.personaltracker.dao.FastingDao;
+import com.health.personaltracker.dao.FitnessDao;
 
 public abstract class FragmentBase extends Fragment {
 
@@ -15,6 +16,7 @@ public abstract class FragmentBase extends Fragment {
         return Room.databaseBuilder(getActivity().getApplicationContext(),
                 AppDatabase.class, getString(R.string.app_database))
                 .allowMainThreadQueries()
+                .addMigrations(from1to2())
                 .build();
     }
 
@@ -23,12 +25,24 @@ public abstract class FragmentBase extends Fragment {
         return new Migration(1, 2) {
             @Override
             public void migrate(SupportSQLiteDatabase db) {
-                super.migrate(db);
+
+                db.execSQL(
+                        "CREATE TABLE fitness_records (" +
+                                "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                                "age INTEGER NOT NULL, " +
+                                "weight REAL NOT NULL, " +
+                                "steps INTEGER NOT NULL, " +
+                                "exercise INTEGER NOT NULL)" // Room stores boolean as INTEGER (0 or 1)
+                );
             }
         };
     }
     protected FastingDao getFastingDao() {
         return getAppDatabase().fastingDao();
     }
+    protected FitnessDao getFitnessDao() {
+        return getAppDatabase().fitnessDao();
+    }
+
 }
 
