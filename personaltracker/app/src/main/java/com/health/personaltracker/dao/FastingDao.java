@@ -21,6 +21,9 @@ public interface FastingDao {
     @Query("SELECT * FROM fasting WHERE active LIMIT 1")
     Fasting findActive();
 
+    @Query("DELETE FROM fasting WHERE uid = :id")
+    void deleteById(long id);
+
     @Insert
     void insertAll(Fasting... fasting);
 

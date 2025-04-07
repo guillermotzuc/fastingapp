@@ -204,13 +204,13 @@ public class HomeFragment extends FragmentBase {
             Period period = new Period(DateTime.parse(current.start_datetime), DateTime.now());
             int hours = period.getHours();
             if (hours == 0) {
-                String statusMessage = String.format("%s, Minutes: %s",
+                String statusMessage = String.format("%s, %sm",
                         startDate, period.getMinutes());
                 progressBarLabel.setText(statusMessage);
                 progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
             } else {
                 int percentage = (hours * 100) / 24;
-                String statusMessage = String.format("%s, Hours: %s Minutes: %s [%s]",
+                String statusMessage = String.format("%s, %sh %sm [%s%%]",
                         startDate, hours, period.getMinutes(), percentage);
                 progressBarLabel.setText(statusMessage);
                 progressBar.setProgress(percentage, true);

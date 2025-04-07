@@ -1,4 +1,4 @@
-package com.health.personaltracker.ui.toolbar;
+package com.health.personaltracker.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +14,13 @@ import androidx.core.view.WindowInsetsCompat;
 import com.health.personaltracker.MainActivity;
 import com.health.personaltracker.R;
 
-public class DailyReflectionActivity extends AppCompatActivity {
+public class HistoryViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(R.string.title_daily_reflection);
-
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_daily_relection);
+        setContentView(R.layout.activity_history_view);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -33,23 +31,19 @@ public class DailyReflectionActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_daily_reflection, menu);
+        getMenuInflater().inflate(R.menu.menu_report_bug, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == R.id.daily_reflection_to_main) {
-            Intent myIntent = new Intent(this, MainActivity.class);
-            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            //Bundle is optional
-            Bundle bundle = new Bundle();
-            bundle.putString("MyValue1", "val1");
-            myIntent.putExtras(bundle);
-            //end Bundle
-            startActivity(myIntent);
-        }
+        //Bundle is optional
+        Bundle bundle = new Bundle();
+        Intent myIntent = new Intent(this, MainActivity.class);
+        myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        bundle.putString("source_activity", "HistoryViewActivity");
+        myIntent.putExtras(bundle);
+        startActivity(myIntent);
         return (super.onOptionsItemSelected(item));
     }
 }
