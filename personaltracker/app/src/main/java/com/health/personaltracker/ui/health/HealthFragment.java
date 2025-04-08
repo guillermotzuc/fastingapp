@@ -16,6 +16,9 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
+import com.google.android.material.textfield.TextInputEditText;
 import com.health.personaltracker.R;
 import com.health.personaltracker.databinding.FragmentHealthBinding;
 import com.health.personaltracker.databinding.FragmentHomeBinding;
@@ -37,6 +40,9 @@ public class HealthFragment extends FragmentBase {
     private static final String ARG_PARAM2 = "param2";
     private FragmentHealthBinding binding;
     private BarChart stepsChart;
+    private TextInputEditText etEdad, etPeso, etPasos;
+    private MaterialCheckBox cbExercise;
+    private MaterialButton btnGuardar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -77,11 +83,31 @@ public class HealthFragment extends FragmentBase {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentHealthBinding.inflate(inflater, container, false);
-        stepsChart = binding.stepsChart;
+
+        this.etEdad = binding.etEdad;
+        this.etPeso = binding.etPeso;
+        this.etPasos = binding.etPasos;
+        this.cbExercise = binding.cbExercise;
+        this.btnGuardar = binding.btnGuardar;
+        this.stepsChart = binding.stepsChart;
         setupChart();
         loadStepAverages();
+
+        //setOnClickListenerForSaveFitnessRecord();
         // Inflate the layout for this fragment
         return binding.getRoot();
+    }
+
+    private void setOnClickListenerForSaveFitnessRecord() {
+        this.btnGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                etEdad.setText("");
+                etPeso.setText("");
+                etPasos.setText("");
+                cbExercise.setEnabled(false);
+            }
+        });
     }
 
     private void setupChart() {

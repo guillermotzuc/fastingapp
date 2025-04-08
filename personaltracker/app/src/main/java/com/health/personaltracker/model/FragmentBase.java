@@ -16,7 +16,7 @@ public abstract class FragmentBase extends Fragment {
         return Room.databaseBuilder(getActivity().getApplicationContext(),
                 AppDatabase.class, getString(R.string.app_database))
                 .allowMainThreadQueries()
-                .addMigrations(from1to2())
+                .addMigrations(from1to2(), from2to3())
                 .build();
     }
 
@@ -37,6 +37,17 @@ public abstract class FragmentBase extends Fragment {
             }
         };
     }
+    private Migration from2to3() {
+        return new Migration(2, 3) {
+            @Override
+            public void migrate(SupportSQLiteDatabase db) {
+                // Add new columns to the existing table
+                db.execSQL("ALTER TABLE fitness_records ADD COLUMN timestamp INTEGER NOT NULL DEFAULT 0");
+                db.execSQL("ALTER TABLE fitness_records ADD COLUMN dayOfWeek INTEGER NOT NULL DEFAULT 0");
+            }
+        };
+    }
+
     protected FastingDao getFastingDao() {
         return getAppDatabase().fastingDao();
     }

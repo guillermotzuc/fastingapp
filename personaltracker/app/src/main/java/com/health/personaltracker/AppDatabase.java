@@ -8,7 +8,7 @@ import com.health.personaltracker.dao.FitnessDao;
 import com.health.personaltracker.entity.Fasting;
 import com.health.personaltracker.entity.FitnessRecord;
 
-@Database(entities = { Fasting.class, FitnessRecord.class }, version = 2, exportSchema = true)
+@Database(entities = { Fasting.class, FitnessRecord.class }, version = 3, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract FastingDao fastingDao();
