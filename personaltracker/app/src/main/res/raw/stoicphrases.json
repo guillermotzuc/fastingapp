@@ -21,7 +21,8 @@
 ,{ "phrase" : "3. Sé deliberado en tus esfuerzos. Cada día no debería ser sólo otra serie de rutinas sin sentido."}
 ,{ "phrase" : "La comodidad es una forma de esclavitud, porque condiciona tu felicidad a las cosas que tienes."}
 ,{ "phrase" : "1. La práctica de la pobreza implica tomarse unos días al mes para vivir de forma conservadora, muy por debajo de sus posibilidades."}
-,{ "phrase" : "2. PRACTICA LO QUE TEMES"},{ "phrase" : "ELIMINAR TU IGNORANCIAPero no asumas nada, en este ejercicio, necesitas secar el pozo de la ignorancia que alimenta tu miedo haciendo las preguntas correctas.Luego, has las preguntas difíciles.Porque la verdad es que lo que realmente nos asusta no es necesariamente la cosa o el evento en sí, sino la interpretación a menudo exagerada de nuestra mente."}
+,{ "phrase" : "2. PRACTICA LO QUE TEMES"},
+ { "phrase" : "ELIMINAR TU IGNORANCIAPero no asumas nada, en este ejercicio, necesitas secar el pozo de la ignorancia que alimenta tu miedo haciendo las preguntas correctas.Luego, has las preguntas difíciles.Porque la verdad es que lo que realmente nos asusta no es necesariamente la cosa o el evento en sí, sino la interpretación a menudo exagerada de nuestra mente."}
 ,{ "phrase" : "Actuáis como mortales en todo lo que teméis, y como inmortales en todo lo que deséis. Lucius Annaeus Seneca"}
 ,{ "phrase" : "El entrenamiento de la percepciónTenemos las cosas que deseamos, y a menudo las perseguimos con un enfoque único."}
 ,{ "phrase" : "Elija no ser dañado y no será dañado. No te sientas dañado y sentirás que no lo has sido. "}
@@ -440,4 +441,11 @@
 ,{ "phrase" : "Ya sea al hablar ante el Senado o ante la persona más humilde, utiliza un lenguaje respetuoso, no pretencioso. Que tu discurso sea claro y honesto, Marco Aurelio." }
 ,{ "phrase" : "Todo es efímero, no sólo el que recuerda sino también el recordado, Seneca" }
 ,{ "phrase" : "Siempre tienes la opción de no tener opinión. No hay necesidad de enojarse o de desperdiciar el tiempo por cosas que no puedes controlar, Marco Aurelio." }
+
+,{ "phrase" : "Incluso si me falta el talento, no abandonaré el esfuerzo. Epicteto no será mejor que Sócrates. Pero si soy mejor que ayer, estaré satisfecho. Epiceto" }
+,{ "phrase" : "Las señales de una persona que está progresando: no critica a nadie, no alaba a nadie, no culpa ni acusa a nadie y nunca habla de sí misma como si fuera alguien de importancia, o como alguien que tiene mucho conocimiento. Y si experimenta alguna frustración o decepción, apunta el dedo a sí misma. Epiceto" }
+,{ "phrase" : "Ninguna acción es honorable cuando es realizada con desánimo o por obligación. Todo lo que es honorable es voluntario. Seneca" }
+,{ "phrase" : "Esta también es una falla de los torpes: siempre se están preparando para vivir" }
+,{ "phrase" : "No hay nada que temer en tus asuntos excepto\nel miedo en sí mismo" }
+
 ]
