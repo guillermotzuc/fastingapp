@@ -22,9 +22,14 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.health.personaltracker.R;
 import com.health.personaltracker.databinding.FragmentHealthBinding;
 import com.health.personaltracker.databinding.FragmentHomeBinding;
+import com.health.personaltracker.entity.FitnessRecord;
 import com.health.personaltracker.model.FragmentBase;
 
+import java.time.DayOfWeek;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -93,7 +98,7 @@ public class HealthFragment extends FragmentBase {
         setupChart();
         loadStepAverages();
 
-        //setOnClickListenerForSaveFitnessRecord();
+        setOnClickListenerForSaveFitnessRecord();
         // Inflate the layout for this fragment
         return binding.getRoot();
     }
@@ -102,10 +107,32 @@ public class HealthFragment extends FragmentBase {
         this.btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Get current date
+                LocalDate today = LocalDate.now();
+
+                // Get day of week
+                DayOfWeek dayOfWeek = today.getDayOfWeek();
+                Date date = new Date();
+                Instant dateInstant = date.toInstant();
+                int ege = Integer.parseInt(etEdad.getText().toString());
+                int pasos = Integer.parseInt(etPasos.getText().toString());
+                int peso = Integer.parseInt(etPeso.getText().toString());
+                boolean excercise = Boolean.valueOf(cbExercise.isChecked());
+
+                FitnessRecord record = new FitnessRecord(
+                        ege,
+                        peso,
+                        pasos,
+                        excercise,
+                        dateInstant.getEpochSecond(),
+                        dayOfWeek.getValue()
+                );
+                getFitnessDao().insertRecord(record);
                 etEdad.setText("");
                 etPeso.setText("");
                 etPasos.setText("");
-                cbExercise.setEnabled(false);
+                cbExercise.setChecked(false);
             }
         });
     }
