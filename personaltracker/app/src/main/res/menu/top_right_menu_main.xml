@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item android:id="@+id/main_to_daily_reflection" app:showAsAction="ifRoom" android:visible="false" android:title="@string/title_daily_reflection"/>
+    <item android:id="@+id/main_to_report_bug" android:icon="@drawable/ic_bug_report_24dp" app:showAsAction="never" android:title="@string/title_report_bug"/>
+    <item android:id="@+id/main_to_reset" app:showAsAction="never" android:visible="false"  android:title="@string/title_reset"/>
+</menu>

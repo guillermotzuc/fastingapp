@@ -28,12 +28,12 @@ public class FastingCardGVAdapter extends ArrayAdapter<FastingCardModel> {
         View listitemView = convertView;
         if (listitemView == null) {
             // Layout Inflater inflates each item to be displayed in GridView.
-            listitemView = LayoutInflater.from(getContext()).inflate(R.layout.card_item, parent, false);
+            listitemView = LayoutInflater.from(getContext()).inflate(R.layout.dashboard_card_item, parent, false);
         }
 
         FastingCardModel courseModel = getItem(position);
-        TextView cardTV = listitemView.findViewById(R.id.fasting_card_textview_id);
-        ImageView cardIV = listitemView.findViewById(R.id.fasting_card_img_id);
+        TextView cardTV = listitemView.findViewById(R.id.dashboard_card_item_textview_id);
+        ImageView cardIV = listitemView.findViewById(R.id.dashboard_card_item_image_view_id);
 
         cardTV.setText(courseModel.getCourse_name());
         cardIV.setImageResource(courseModel.getImgid());

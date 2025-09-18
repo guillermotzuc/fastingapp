@@ -15,14 +15,14 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/fasting_card_img_id"
+            android:id="@+id/dashboard_card_item_image_view_id"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/fasting_card_textview_id"
+            android:id="@+id/dashboard_card_item_textview_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
