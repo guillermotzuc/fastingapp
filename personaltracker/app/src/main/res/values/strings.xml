@@ -27,6 +27,12 @@
     <string name="fasting_13_11">13/11</string>
     <string name="fasting_12_12">12/12</string>
     <string name="btn_cancel">Descartar Ayuno</string>
+    <string name="label_12_hours_completed">12h</string>
+    <string name="label_13_hours_completed">13h</string>
+    <string name="label_14_hours_completed">14h</string>
+    <string name="label_15_hours_completed">15h</string>
+    <string name="label_16_hours_completed">16h</string>
+
 
     <!-- LABELS STRINGS -->
     <string name="report_bug_label">Descripción:</string>
@@ -42,7 +48,5 @@
     <string name="contact_mail">guillermo.tzuc@gmail.com</string>
     <string name="mail_subject_new_feature">[Nueva Funcionalidad]</string>
     <string name="mail_subject_bug">[Bug]</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

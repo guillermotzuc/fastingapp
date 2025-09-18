@@ -23,15 +23,4 @@
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
 
-    <fragment
-        android:id="@+id/navigation_info"
-        android:name="com.health.personaltracker.ui.info.InfoFragment"
-        android:label="@string/title_info"
-        tools:layout="@layout/fragment_info" />
-
-    <fragment
-        android:id="@+id/navigation_health"
-        android:name="com.health.personaltracker.ui.health.HealthFragment"
-        android:label="@string/title_health"
-        tools:layout="@layout/fragment_health" />
 </navigation>

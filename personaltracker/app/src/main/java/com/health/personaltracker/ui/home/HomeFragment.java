@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,6 +38,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 public class HomeFragment extends FragmentBase {
 
@@ -47,6 +51,14 @@ public class HomeFragment extends FragmentBase {
     private FloatingActionButton refreshFastingBtn;
     private FloatingActionButton btnSharePhrase;
     private Button btnDiscardFasting;
+    private Button btn12Completed;
+    private Button btn13Completed;
+    private Button btn14Completed;
+    private Button btn15Completed;
+    private Button btn16Completed;
+
+    private ColorStateList colorStateListCompleted;
+    private ColorStateList colorStateListDefault;
 
     private void loadControlsFromBinding(FragmentHomeBinding binding) {
 
@@ -57,11 +69,19 @@ public class HomeFragment extends FragmentBase {
         refreshFastingBtn = binding.btnRefresh;
         btnSharePhrase = binding.btnShare;
         btnDiscardFasting = binding.btnCancel;
+        btn12Completed = binding.btn12HoursCompletedButton;
+        btn13Completed = binding.btn13HoursCompletedButton;
+        btn14Completed = binding.btn14HoursCompletedButton;
+        btn15Completed = binding.btn15HoursCompletedButton;
+        btn16Completed = binding.btn16HoursCompletedButton;
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        colorStateListCompleted = ColorStateList.valueOf(Color.rgb(169, 223, 191));
+        colorStateListDefault = ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.light_orange));
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         // Bind global objects
@@ -73,7 +93,7 @@ public class HomeFragment extends FragmentBase {
 
         // Initial fasting status
         Fasting currentFasting = getCurrentFasting();
-        updateFasting(currentFasting);
+        updateFastingView(currentFasting);
 
         // Bind click events
         setOnClickListenerForStartFasting();
@@ -114,7 +134,7 @@ public class HomeFragment extends FragmentBase {
             @Override
             public void onClick(View v) {
                 Fasting currentFasting = getCurrentFasting();
-                updateFasting(currentFasting);
+                updateFastingView(currentFasting);
             }
         });
     }
@@ -146,7 +166,7 @@ public class HomeFragment extends FragmentBase {
             newFasting.end_datetime = "";
             newFasting.active = true;
             fastingDao.insertAll(newFasting);
-            updateFasting(newFasting);
+            updateFastingView(newFasting);
         } catch (Exception ex) {
             Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -158,7 +178,7 @@ public class HomeFragment extends FragmentBase {
             if (Optional.ofNullable(current).isPresent()) {
                 FastingDao fastingDao = getFastingDao();
                 fastingDao.delete(current);
-                updateFasting(null);
+                updateFastingView(null);
             }
         } catch (Exception ex) {
             Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
@@ -177,7 +197,7 @@ public class HomeFragment extends FragmentBase {
                 current.hours = p.getHours();
                 current.active = false;
                 fastingDao.update(current);
-                updateFasting(null);
+                updateFastingView(null);
             }
         } catch (Exception ex) {
             Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
@@ -190,7 +210,7 @@ public class HomeFragment extends FragmentBase {
         return fastingDao.findActive();
     }
 
-    private void updateFasting(Fasting current) {
+    private void updateFastingView(Fasting current) {
 
         if (Optional.ofNullable(current).isPresent()) {
             progressBar.setVisibility(View.VISIBLE);
@@ -203,30 +223,78 @@ public class HomeFragment extends FragmentBase {
 
             Period period = new Period(DateTime.parse(current.start_datetime), DateTime.now());
             int hours = period.getHours();
+            updateCompletedFastingButtons(hours);
             if (hours == 0) {
                 String statusMessage = String.format("%s, %sm",
                         startDate, period.getMinutes());
                 progressBarLabel.setText(statusMessage);
-                progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
+                progressBar.setProgressTintList(colorStateListDefault);
             } else {
                 int percentage = (hours * 100) / 24;
-                String statusMessage = String.format("%s, %sh %sm [%s%%]",
+                String statusMessage = String.format("%s, %sh %sm [%s%% del día]",
                         startDate, hours, period.getMinutes(), percentage);
                 progressBarLabel.setText(statusMessage);
                 progressBar.setProgress(percentage, true);
                 if (hours >= 12) {
-                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(169, 223, 191)));
+                    progressBar.setProgressTintList(colorStateListCompleted);
                 }
             }
         } else {
-            progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(237, 187, 153)));
+            progressBar.setProgressTintList(colorStateListDefault);
             progressBar.setProgress(0, true);
             progressBar.setVisibility(View.GONE);
             progressBarLabel.setText("");
             btnDiscardFasting.setVisibility(View.GONE);
             Drawable image = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_black_timer_play_24dp, getActivity().getTheme());
             startStopFastingBtn.setImageDrawable(image);
+            updateCompletedFastingButtons(0);
         }
+    }
+
+    private void updateCompletedFastingButtons(final int hours) {
+
+
+        BiConsumer<Integer, Button> markAsCompleted = (h, b) -> {
+
+            if (hours < h) {
+                return;
+            }
+
+            b.setBackgroundTintList(colorStateListCompleted);
+            b.setCompoundDrawablesWithIntrinsicBounds(
+                    0,  // left
+                    R.drawable.outline_check_small_24, // top
+                    0,  // right
+                    0   // bottom
+            );
+        };
+
+        Consumer<Button> clean = (b) -> {
+            b.setBackgroundTintList(colorStateListDefault);
+            b.setCompoundDrawablesWithIntrinsicBounds(
+                    0,  // left
+                    0, // top
+                    0,  // right
+                    0   // bottom
+            );
+        };
+
+        if (hours == 0) {
+
+            clean.accept(btn12Completed);
+            clean.accept(btn13Completed);
+            clean.accept(btn14Completed);
+            clean.accept(btn15Completed);
+            clean.accept(btn16Completed);
+        } else {
+
+            markAsCompleted.accept(12, btn12Completed);
+            markAsCompleted.accept(13, btn13Completed);
+            markAsCompleted.accept(14, btn14Completed);
+            markAsCompleted.accept(15, btn15Completed);
+            markAsCompleted.accept(16, btn16Completed);
+        }
+
     }
 
     @Override
