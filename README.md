@@ -1,3 +1,8 @@
+# Motivacion
+## "Recuerda comportarte en la vida como si estuvieras en un banquete -dijo Epicteto-. Cuando algo que pase de mano en mano llegue a ti , extiende la mano y coge una ración moderada . ¿ Pasa de largo ? No lo detengas . ¿ Aún no ha llegado ? No ardas en deseos, sino espera a que llegue a ti. Actúa de esta manera con tus hijos ,tu esposa ,tu posición y tu riqueza .Un día te harás digno de un banquete con los dioses"
+
+Esta app fue diseñada para quienes practican el ayuno intermitente, con un enfoque en el autocontrol y la inspiración estoica.
+
 # Description
 Un rastreador de ayuno simple que te ayuda a administrar el ayuno intermitente de 12 a 16 horas, mantenerte en el cronograma y seguir tu progreso sin esfuerzo.
 
