@@ -25,6 +25,7 @@ import com.health.personaltracker.dao.FastingDao;
 import com.health.personaltracker.databinding.FragmentHomeBinding;
 import com.health.personaltracker.entity.Fasting;
 import com.health.personaltracker.model.FragmentBase;
+import com.health.personaltracker.util.ColorUtil;
 import com.health.personaltracker.util.PhraseHelper;
 
 import org.joda.time.DateTime;
@@ -80,8 +81,8 @@ public class HomeFragment extends FragmentBase {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        colorStateListCompleted = ColorStateList.valueOf(Color.rgb(169, 223, 191));
-        colorStateListDefault = ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.light_orange));
+        colorStateListCompleted = ColorUtil.COMPLETION_COLOR;
+        colorStateListDefault = ColorUtil.DEFAULT_COLOR.apply(getContext());
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         // Bind global objects

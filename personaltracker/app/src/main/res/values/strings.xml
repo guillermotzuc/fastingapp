@@ -32,6 +32,8 @@
     <string name="label_14_hours_completed">14h</string>
     <string name="label_15_hours_completed">15h</string>
     <string name="label_16_hours_completed">16h</string>
+    <string name="label_filter_all">All</string>
+    <string name="label_filter_week">Week</string>
 
 
     <!-- LABELS STRINGS -->
