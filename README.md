@@ -1,5 +1,5 @@
 # Description
-A simple fasting tracker that helps you manage intermittent fasting from 12 to 16 hours, stay on schedule, and track your progress effortlessly.
+Un rastreador de ayuno simple que te ayuda a administrar el ayuno intermitente de 12 a 16 horas, mantenerte en el cronograma y seguir tu progreso sin esfuerzo.
 
 # Literatura
 - "Manual de estoicismo" by Epicteto.
